@@ -1,27 +1,28 @@
+// Подключение файлов
 const canvas = document.getElementById("game");
-const ctx = canvas.getContext("2d");
-
+const ctx = canvas.getContext("2d"); 
+// Подключение изображений
 const ground = new Image();
 ground.src = "img/ground.png";
 
 const foodImg = new Image();
 foodImg.src = "img/food.png";
-
+// Параметры поля
 let box = 32;
 
 let score = 0;
-
+// Отрисовка еды
 let food = {
     x: Math.floor((Math.random() * 17 + 1)) * box,
     y: Math.floor((Math.random() * 15 + 3)) * box,
 };
-
+// Отрисовка змеи
 let snake = [];
 snake[0] = {
     x: 9 * box,
     y: 10 * box,
 };
-
+// Назначение клавиш
 document.addEventListener("keydown", direction);
 
 let dir;
@@ -36,7 +37,7 @@ function direction(event){
     else if(event.keyCode == 40 && dir != "up")
      dir = "down";
 }
-
+// да
 function eatTail(head, arr){
     for(let i = 0; i < arr.length; i++){
         if(head.x == arr[i].x && head.y == arr[i].y){
@@ -44,7 +45,7 @@ function eatTail(head, arr){
         }
     }
 }
-
+// Логика игры
 function drawGame(){
     ctx.drawImage(ground, 0, 0 );
 
